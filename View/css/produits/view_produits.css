@@ -1,0 +1,214 @@
+:root {
+    --main-color: #ffca08;
+    --main-hover-color: #e8b90d;
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8f8ff;
+  padding: 0 20px;
+}
+
+.header {
+  position: absolute;
+  top: 10;
+  width: 80%;
+  height: 100px;
+}
+
+.lien-nav{
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 180px;
+  background: #fff;
+  padding: 13px 15px;
+  border-radius: 3px;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
+}
+
+.rayon-nav{
+  display: flex;
+  position: absolute;
+  margin-left: 500px;
+  top: 50px;
+  padding: 13px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cart-nav{
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 130px;
+  background: #fff;
+  padding: 13px 15px;
+  border-radius: 3px;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-evenly;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.15);
+}
+
+.cart-nav .icon{
+  color: #111;
+}
+
+.cart-nav .icon i{
+  font-size: 20px;
+}
+
+.cart-nav .icon span{
+  font-weight: 500;
+}
+
+.cart-nav .item-count{
+  font-size: 15px;
+  height: 23px;
+  width: 23px;
+  color: #111;
+  background: var(--main-color);
+  text-align: center;
+  line-height: 22px;
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 120px;
+  flex-wrap: wrap;
+  max-width: 1130px;
+}
+
+.wrapper .card{
+  position: relative;
+  margin: 20px 20px 20px 20px;
+  background: #fff;
+  border-radius: 3px;
+  width: calc(25% - 15px);
+  overflow: hidden;
+  box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.15);
+}
+
+.wrapper .card img{
+  width: 100%;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.card:hover img{
+  transform: scale(1.1);
+}
+
+.wrapper .card .content{
+  position: absolute;
+  width: 100%;
+  bottom: -60%;
+  background: #fff;
+  padding: 10px 20px 22px 20px;
+  box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.wrapper .card:hover .content{
+  bottom: 0;
+}
+
+.card .content .row,
+.content .buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content .row .details span{
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.content .row .details p{
+  color: #333;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.content .row .price{
+  color:var(--main-color);
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.content .buttons{
+  margin-top: 20px;
+}
+
+.content .buttons a{
+  width: 100%;
+  padding: 9px 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 3px;
+  border: 2px solid var(--main-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.buttons a{
+  color: var(--main-color);
+  margin-right: 10px;
+  background: #fff;
+}
+.buttons a:hover{
+  color: #fff;
+  background: var(--main-color);
+}
+
+.content .buttons button{
+  width: 100%;
+  padding: 9px 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 3px;
+  border: 2px solid var(--main-color);
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.buttons button{
+  color: #fff;
+  margin-left: 10px;
+  background: var(--main-color);
+}
+
+button:hover{
+  background: var(--main-hover-color);
+  border-color: var(--main-hover-color);
+}
+
+.link_gestion {
+  text-align: center;
+  color: #111;
+  text-decoration: none;
+}

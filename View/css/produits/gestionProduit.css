@@ -1,0 +1,37 @@
+h1 {
+	text-align: center;
+	margin-bottom: 80px;
+	color: #fff;
+}
+
+h2 {
+	color: #fff;
+	font-size: 20px;
+	text-align: center;
+	margin: -50px 0 50px 0;
+}
+
+table,td,th {
+	margin: auto;
+	margin-bottom: 100px;
+    border-collapse: collapse;
+}
+
+th {
+	height: 50px;
+	background-color: #273746;
+}
+
+td {
+	width: 50px;
+	height: 50px;
+}
+
+table {
+	width: 900px;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 20px;
+	background-color: #fff;
+	cursor: pointer;
+}
