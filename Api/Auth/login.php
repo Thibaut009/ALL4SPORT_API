@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "../../Model/api.php";
 $api = new Api();
 

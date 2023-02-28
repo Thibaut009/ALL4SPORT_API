@@ -33,7 +33,9 @@ class Api
 
   public function getProduits()
   {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, dispo_produit, qte_produit, img_produit, fk_rayon FROM produits";
+    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit, fk_rayon 
+            FROM produits
+            INNER JOIN magasin on fk_produit = id_produit";
 
     $requete = $this->api->prepare($sql);
     $requete->execute();
@@ -43,12 +45,13 @@ class Api
 
   public function getProduitById($id)
   {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, dispo_produit, qte_produit, img_produit 
+    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit 
             FROM produits 
+            INNER JOIN magasin on fk_produit = id_produit
             WHERE id_produit = :id";
 
     $requete = $this->api->prepare($sql);
-    $requete->bindParam(  ":id",$id);
+    $requete->bindParam(":id",$id);
     $requete->execute();
     $resultat=$requete->fetchAll();
     echo json_encode($resultat, JSON_NUMERIC_CHECK);
@@ -56,12 +59,13 @@ class Api
 
   public function getProduitsByRayon($rayon)
   {
-    $sql = "SELECT * 
+    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit 
             FROM produits
+            INNER JOIN magasin on fk_produit = id_produit
             WHERE fk_rayon = :rayon";
 
     $requete = $this->api->prepare($sql);       
-    $requete->bindParam(  ":rayon",$rayon);
+    $requete->bindParam(":rayon",$rayon);
     $requete->execute();
     $resultat=$requete->fetchAll();
     echo json_encode($resultat, JSON_NUMERIC_CHECK);

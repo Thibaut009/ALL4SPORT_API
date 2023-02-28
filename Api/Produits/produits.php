@@ -1,10 +1,8 @@
 <?php
-session_start();
 require_once "../../Model/api.php";
 $api = new Api();
 
-
-if(!empty($_POST["id"])) {
+if(!empty($_POST['id'])) {
   $id = $_POST['id'];
   $api->getProduitById($id);
 

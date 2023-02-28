@@ -85,8 +85,9 @@ class Bdd
 
   public function getProduitById($id)
   {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, dispo_produit, qte_produit, img_produit 
+    $sql = "SELECT id_produit, nom_produit, prix_produit, qte_produit_magasin, img_produit, nom_magasin
             FROM produits 
+            INNER JOIN magasin on fk_produit = ".$id."
             WHERE id_produit = ".$id;
             
     $query =  $this->bdd->prepare($sql);

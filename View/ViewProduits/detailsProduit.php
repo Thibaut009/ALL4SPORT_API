@@ -28,7 +28,7 @@
               <?= $produit['nom_produit'] ?>
             </h1>
             <span class="data__subtitle">
-              Disponibles à <?= $produit['dispo_produit'] ?>
+              Disponibles à <?= $produit['nom_magasin'] ?>
             </span>
             <p class="data__description">
               Lorem Ipsum is simply dummy text of the printing
@@ -45,7 +45,7 @@
               </h3>
               <div class="size__content">
                 <span class="size__tallas active">
-                  <?= $produit['qte_produit'] ?>
+                  <?= $produit['qte_produit_magasin'] ?>
                 </span>
               </div>
             </div>            
