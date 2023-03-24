@@ -28,14 +28,6 @@
           <input class="submit" type="submit" value="Selectionner">
         </div>
       </form>
-
-      <div class="cart-nav">
-        <div class="icon">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Cart</span>
-        </div>
-        <div class="item-count">0</div>
-      </div>
     </div>
       
     <div class="wrapper">

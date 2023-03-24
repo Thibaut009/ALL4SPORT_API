@@ -15,57 +15,32 @@ class Api
     }
   }
 
-
-  public function login($pseudo, $hash, $privilege)
-  {
+  public function loginUser($pseudo, $hash, $privilege) {
     $sql = "SELECT pseudo FROM users WHERE mdp = :pwd and pseudo = :pseudo and fk_privilege = :privilege";
-    
-    $requete = $this->api->prepare($sql);
-    $requete->execute(array(":pseudo" => $pseudo,
-                           ":pwd" => $hash,
-                           ":privilege" => $privilege
-                           )
-                      );
-
-    $resultat=$requete->fetch();
-    echo json_encode($resultat, JSON_NUMERIC_CHECK);
-  }
-
-  public function getProduits()
-  {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit, fk_rayon 
-            FROM produits
-            INNER JOIN magasin on fk_produit = id_produit";
 
     $requete = $this->api->prepare($sql);
-    $requete->execute();
-    $resultat=$requete->fetchAll();
-    echo json_encode($resultat, JSON_NUMERIC_CHECK);
+    $requete->execute(array(":pseudo" => $pseudo, ":pwd" => $hash, ":privilege" => $privilege));
+
+    if ($requete->rowCount() > 0) {
+        // L'enregistrement existe, connexion réussie
+        $response = array("status" => true, "message" => "Connexion réussie");
+    } else {
+        // L'enregistrement n'existe pas, échec de la connexion
+        $response = array("status" => false, "message" => "Identifiants incorrect");
+    }
+
+    echo json_encode($response);
   }
 
-  public function getProduitById($id)
+  public function getProduitByQrcode($qrcode)
   {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit 
+    $sql = "SELECT nom_produit, description_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit 
             FROM produits 
             INNER JOIN magasin on fk_produit = id_produit
-            WHERE id_produit = :id";
+            WHERE qrcode = :qrcode";
 
     $requete = $this->api->prepare($sql);
-    $requete->bindParam(":id",$id);
-    $requete->execute();
-    $resultat=$requete->fetchAll();
-    echo json_encode($resultat, JSON_NUMERIC_CHECK);
-  }
-
-  public function getProduitsByRayon($rayon)
-  {
-    $sql = "SELECT id_produit, nom_produit, prix_produit, nom_magasin, qte_produit_magasin, img_produit 
-            FROM produits
-            INNER JOIN magasin on fk_produit = id_produit
-            WHERE fk_rayon = :rayon";
-
-    $requete = $this->api->prepare($sql);       
-    $requete->bindParam(":rayon",$rayon);
+    $requete->bindParam(":qrcode",$qrcode);
     $requete->execute();
     $resultat=$requete->fetchAll();
     echo json_encode($resultat, JSON_NUMERIC_CHECK);
